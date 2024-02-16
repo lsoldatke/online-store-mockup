@@ -10,24 +10,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/onlinestoremockup")
+@RequestMapping("/onlinestoremockup/items")
 public class ItemController {
     private final ItemService itemService;
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
-    @GetMapping("/items")
+    @GetMapping
     public List<Item> returnAllItems() {
         return itemService.getAllItems();
     }
 
-    @GetMapping("/items/{id}")
+    @GetMapping("/{id}")
     public Optional<Item> returnItemById(@PathVariable Long id) {
         return itemService.getItemById(id);
     }
 
-    @PostMapping("/items")
+    @PostMapping
     public ResponseEntity<Item> saveItem(@RequestBody Item item) {
         itemService.addItem(item);
         return ResponseEntity.ok(item);
