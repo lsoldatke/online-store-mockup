@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Online store mockup</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     <header>
         <h1>Online store</h1>
-        <ul class="menu">
-            <li><a href="#">Log in / Sign up</a></li>
-            <li><a href="#">Menu</a></li>
-        </ul>
+        <div class="tools">
+            <form class="search-bar">
+                <input type="text" id="searched-phrase" placeholder="Search for something...">
+                <button type="submit">Search</button>
+            </form>
+            <ul class="menu">
+                <li><a href="#">Log in / Sign up</a></li>
+                <li><a href="#">Menu</a></li>
+            </ul>
+        </div>
     </header>
     <main>
         <div class="categories-div">
@@ -28,25 +34,28 @@
                 <li><a href="#">Category 10</a></li>
             </ul>
         </div>
-        <div class="recommended-articles">
-            <div class="test-item">
-                <img src="http://dummyimage.com/183x100.png/cc0000/ffffff" alt="Some random image">
-                <p>Article name 1</p>
-                <p>Price: </p>
+        <div class="recommended-articles-div">
+            <h2>Recommended</h2>
+            <div class="recommended-articles-content">
+                <div class="test-item">
+                    <img src="http://dummyimage.com/183x100.png/cc0000/ffffff" alt="Some random image">
+                    <p>Article name 1</p>
+                    <p>Price: </p>
+                </div>
+                <div class="test-item">2</div>
+                <div class="test-item">3</div>
+                <div class="test-item">4</div>
+                <div class="test-item">5</div>
+                <div class="test-item">6</div>
+                <div class="test-item">7</div>
+                <div class="test-item">8</div>
+                <div class="test-item">9</div>
+                <div class="test-item">10</div>
+                <div class="test-item">11</div>
+                <div class="test-item">12</div>
+                <div class="test-item">13</div>
+                <div class="test-item">14</div>
             </div>
-            <div class="test-item">2</div>
-            <div class="test-item">3</div>
-            <div class="test-item">4</div>
-            <div class="test-item">5</div>
-            <div class="test-item">6</div>
-            <div class="test-item">7</div>
-            <div class="test-item">8</div>
-            <div class="test-item">9</div>
-            <div class="test-item">10</div>
-            <div class="test-item">11</div>
-            <div class="test-item">12</div>
-            <div class="test-item">13</div>
-            <div class="test-item">14</div>
         </div>
     </main>
 </body>
