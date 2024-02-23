@@ -1,9 +1,6 @@
 package org.example.onlinestoremockup.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,4 +11,8 @@ public class Item {
     private Long id;
     private String name;
     private float price;
+    @Enumerated(EnumType.STRING)
+    private ItemCategory category;
+    private String imageUrl;
+    private int available;
 }
