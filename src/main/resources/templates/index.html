@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Online store mockup</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <header>
@@ -37,24 +37,11 @@
         <div class="recommended-articles-div">
             <h2>Recommended</h2>
             <div class="recommended-articles-content">
-                <div class="test-item">
-                    <img src="http://dummyimage.com/183x100.png/cc0000/ffffff" alt="Some random image">
-                    <p>Article name 1</p>
-                    <p>Price: </p>
+                <div th:each="item: ${items}" class="test-item">
+                    <img th:src="@{${item.imageUrl}}" alt="Item image">
+                    <p th:text="${item.name}"></p>
+                    <p th:text="${item.price}"></p>
                 </div>
-                <div class="test-item">2</div>
-                <div class="test-item">3</div>
-                <div class="test-item">4</div>
-                <div class="test-item">5</div>
-                <div class="test-item">6</div>
-                <div class="test-item">7</div>
-                <div class="test-item">8</div>
-                <div class="test-item">9</div>
-                <div class="test-item">10</div>
-                <div class="test-item">11</div>
-                <div class="test-item">12</div>
-                <div class="test-item">13</div>
-                <div class="test-item">14</div>
             </div>
         </div>
     </main>
