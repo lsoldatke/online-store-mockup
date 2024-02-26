@@ -1,6 +1,7 @@
 package org.example.onlinestoremockup.service;
 
 import org.example.onlinestoremockup.model.Item;
+import org.example.onlinestoremockup.model.ItemCategory;
 import org.example.onlinestoremockup.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,9 @@ public class ItemService {
 
     public void addItem(Item item) {
         itemRepository.save(item);
+    }
+
+    public List<ItemCategory> getAllCategories() {
+        return itemRepository.getAllCategories();
     }
 }

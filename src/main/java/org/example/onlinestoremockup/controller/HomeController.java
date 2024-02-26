@@ -18,6 +18,7 @@ public class HomeController {
     @GetMapping
     public String home(Model model) {
         model.addAttribute("items", itemService.getAllItems());
+        model.addAttribute("itemCategories", itemService.getAllCategories());
         return "index";
     }
 }
