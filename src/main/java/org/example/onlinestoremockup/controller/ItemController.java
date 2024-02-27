@@ -5,10 +5,8 @@ import org.example.onlinestoremockup.model.Item;
 import org.example.onlinestoremockup.service.ItemService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,5 +33,12 @@ public class ItemController {
     public ResponseEntity<Item> saveItem(@RequestBody Item item) {
         itemService.addItem(item);
         return ResponseEntity.ok(item);
+    }
+
+    @GetMapping("/category")
+    public String returnItemsByCategory(@RequestParam String categoryName, Model model) {
+        model.addAttribute("results", itemService.getItemsByCategory(categoryName));
+        model.addAttribute("itemCategories", itemService.getAllCategories());
+        return "results";
     }
 }

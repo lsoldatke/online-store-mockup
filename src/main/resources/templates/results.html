@@ -22,13 +22,13 @@
     <main>
         <div class="categories-div">
             <ul class="categories-list">
-                <li th:each="itemCategory: ${itemCategories}"><a th:href="@{localhost:8080/onlinestoremockup/items/category(${itemCategory})}" th:text="${itemCategory}"></a></li>
+                <li th:each="itemCategory: ${itemCategories}"><a th:href="@{localhost:8080/onlinestoremockup/items/category/${itemCategory}}" th:text="${itemCategory}"></a></li>
             </ul>
         </div>
         <div class="recommended-articles-div">
             <h2>Recommended</h2>
             <div class="recommended-articles-content">
-                <div th:each="item: ${items}" class="test-item">
+                <div th:each="item: ${results}" class="test-item">
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
                     <p th:text="${item.name}"></p>
                     <p th:text="${item.price}"></p>

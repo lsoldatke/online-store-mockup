@@ -12,4 +12,7 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT DISTINCT(i.category) FROM Item i")
     List<ItemCategory> getAllCategories();
+
+    @Query("SELECT i FROM Item i WHERE i.category = ?1")
+    List<Item> getByCategory(String categoryName);
 }

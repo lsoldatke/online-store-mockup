@@ -31,4 +31,8 @@ public class ItemService {
     public List<ItemCategory> getAllCategories() {
         return itemRepository.getAllCategories();
     }
+
+    public List<Item> getItemsByCategory(String categoryName) {
+        return itemRepository.getByCategory(categoryName);
+    }
 }
