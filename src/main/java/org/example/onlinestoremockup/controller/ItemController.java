@@ -2,6 +2,7 @@ package org.example.onlinestoremockup.controller;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.example.onlinestoremockup.model.Item;
+import org.example.onlinestoremockup.model.ItemCategory;
 import org.example.onlinestoremockup.service.ItemService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,8 @@ public class ItemController {
 
     @GetMapping("/category")
     public String returnItemsByCategory(@RequestParam String categoryName, Model model) {
-        model.addAttribute("results", itemService.getItemsByCategory(categoryName));
+        ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
+        model.addAttribute("results", itemService.getItemsByCategory(itemCategory));
         model.addAttribute("itemCategories", itemService.getAllCategories());
         return "results";
     }

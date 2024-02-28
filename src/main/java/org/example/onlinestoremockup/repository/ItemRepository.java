@@ -14,5 +14,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<ItemCategory> getAllCategories();
 
     @Query("SELECT i FROM Item i WHERE i.category = ?1")
-    List<Item> getByCategory(String categoryName);
+    List<Item> getByCategory(ItemCategory itemCategory);
 }

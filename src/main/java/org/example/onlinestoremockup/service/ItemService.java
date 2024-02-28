@@ -32,7 +32,7 @@ public class ItemService {
         return itemRepository.getAllCategories();
     }
 
-    public List<Item> getItemsByCategory(String categoryName) {
-        return itemRepository.getByCategory(categoryName);
+    public List<Item> getItemsByCategory(ItemCategory itemCategory) {
+        return itemRepository.getByCategory(itemCategory);
     }
 }

@@ -22,7 +22,7 @@
     <main>
         <div class="categories-div">
             <ul class="categories-list">
-                <li th:each="itemCategory: ${itemCategories}"><a th:href="@{localhost:8080/onlinestoremockup/items/category/${itemCategory}}" th:text="${itemCategory}"></a></li>
+                <li th:each="itemCategory: ${itemCategories}"><a th:href="@{/onlinestoremockup/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a></li>
             </ul>
         </div>
         <div class="recommended-articles-div">
