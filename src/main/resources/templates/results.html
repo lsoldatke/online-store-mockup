@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Online store</h1>
+        <a href="/onlinestoremockup"><h1>Online store</h1></a>
         <div class="tools">
             <form class="search-bar">
                 <input type="text" id="searched-phrase" placeholder="Search for something...">
@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="recommended-articles-div">
-            <h2>Recommended</h2>
+            <h2>Results</h2>
             <div class="recommended-articles-content">
                 <div th:each="item: ${results}" class="test-item">
                     <img th:src="@{${item.imageUrl}}" alt="Item image">

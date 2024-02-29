@@ -35,4 +35,8 @@ public class ItemService {
     public List<Item> getItemsByCategory(ItemCategory itemCategory) {
         return itemRepository.getByCategory(itemCategory);
     }
+
+    public List<Item> getItemsByName(String itemName) {
+        return itemRepository.getByName(itemName);
+    }
 }

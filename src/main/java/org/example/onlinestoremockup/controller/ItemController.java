@@ -43,4 +43,11 @@ public class ItemController {
         model.addAttribute("itemCategories", itemService.getAllCategories());
         return "results";
     }
+
+    @PostMapping("/search")
+    public String returnItemsByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
+        model.addAttribute("results", itemService.getItemsByName(searchedPhrase));
+        model.addAttribute("itemCategories", itemService.getAllCategories());
+        return "results";
+    }
 }
