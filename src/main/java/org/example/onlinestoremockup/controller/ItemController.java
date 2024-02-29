@@ -41,7 +41,7 @@ public class ItemController {
         ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
         model.addAttribute("results", itemService.getItemsByCategory(itemCategory));
         model.addAttribute("itemCategories", itemService.getAllCategories());
-        model.addAttribute("categoryName", categoryName);
+        model.addAttribute("title", categoryName);
         return "results";
     }
 
@@ -49,6 +49,7 @@ public class ItemController {
     public String returnItemsByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
         model.addAttribute("results", itemService.getItemsByName(searchedPhrase));
         model.addAttribute("itemCategories", itemService.getAllCategories());
+        model.addAttribute("title", "Search results");
         return "results";
     }
 }

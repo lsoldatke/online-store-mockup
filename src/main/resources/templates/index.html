@@ -21,6 +21,7 @@
     </header>
     <main>
         <div class="categories-div">
+            <h2>Categories</h2>
             <ul class="categories-list">
                 <li th:each="itemCategory: ${itemCategories}"><a th:href="@{/onlinestoremockup/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a></li>
             </ul>
