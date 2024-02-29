@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="recommended-articles-div">
-            <h2>Results</h2>
+            <h2 th:text="${categoryName}">Results</h2>
             <div class="recommended-articles-content">
                 <div th:each="item: ${results}" class="test-item">
                     <img th:src="@{${item.imageUrl}}" alt="Item image">

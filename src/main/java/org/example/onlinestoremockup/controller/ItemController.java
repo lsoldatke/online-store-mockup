@@ -41,6 +41,7 @@ public class ItemController {
         ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
         model.addAttribute("results", itemService.getItemsByCategory(itemCategory));
         model.addAttribute("itemCategories", itemService.getAllCategories());
+        model.addAttribute("categoryName", categoryName);
         return "results";
     }
 
