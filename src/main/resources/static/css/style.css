@@ -50,8 +50,18 @@ main {
 }
 
 .test-item > img {
-    width: 150px;
-    height: 150px;
+    width: 60%;
+    height: 60%;
+}
+
+.test-item > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test-item > form * {
+    margin: 5px;
 }
 
 .menu {

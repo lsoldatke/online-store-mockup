@@ -21,6 +21,7 @@
     </header>
     <main>
         <div class="categories-div">
+            <h2>Categories</h2>
             <ul class="categories-list">
                 <li th:each="itemCategory: ${itemCategories}"><a th:href="@{/onlinestoremockup/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a></li>
             </ul>
@@ -32,6 +33,10 @@
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
                     <p th:text="${item.name}"></p>
                     <p th:text="${item.price}"></p>
+                    <form method="post" action="">
+                        <label>Quantity: <input type="number" value="0" min="0" max="10000"></label>
+                        <input type="submit" value="Add to cart">
+                    </form>
                 </div>
             </div>
         </div>

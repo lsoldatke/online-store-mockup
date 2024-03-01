@@ -49,7 +49,7 @@ public class ItemController {
     public String returnItemsByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
         model.addAttribute("results", itemService.getItemsByName(searchedPhrase));
         model.addAttribute("itemCategories", itemService.getAllCategories());
-        model.addAttribute("title", "Search results");
+        model.addAttribute("title", "Search results for \"" + searchedPhrase + "\"");
         return "results";
     }
 }
