@@ -1,6 +1,7 @@
 package org.example.onlinestoremockup.controller;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.example.onlinestoremockup.model.Cart;
 import org.example.onlinestoremockup.model.Item;
 import org.example.onlinestoremockup.model.ItemCategory;
 import org.example.onlinestoremockup.service.ItemService;
@@ -50,6 +51,17 @@ public class ItemController {
         model.addAttribute("results", itemService.getItemsByName(searchedPhrase));
         model.addAttribute("itemCategories", itemService.getAllCategories());
         model.addAttribute("title", "Search results for \"" + searchedPhrase + "\"");
+        return "results";
+    }
+
+    @PostMapping("/add-to-cart")
+    public String addToCart(@RequestParam("item-id") Long itemId, @RequestParam("quantity") Integer quantity) {
+        Optional<Item> optionalItem = itemService.getItemById(itemId);
+
+        if (optionalItem.isPresent()) {
+            Cart.addItem(optionalItem.get(), quantity);
+        }
+
         return "results";
     }
 }
