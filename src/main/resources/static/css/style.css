@@ -83,3 +83,20 @@ main {
 .tools {
     display: flex;
 }
+
+.added-to-cart-prompt {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.cart-item > img {
+    width: 15%;
+    height: 15%;
+    margin-right: 15px;
+}

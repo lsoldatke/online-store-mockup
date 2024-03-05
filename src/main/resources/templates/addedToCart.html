@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online store mockup</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/onlinestoremockup"><h1>Online store</h1></a>
+        <div class="tools">
+            <form class="search-bar">
+                <input type="text" id="searched-phrase" placeholder="Search for something...">
+                <button type="submit">Search</button>
+            </form>
+            <ul class="menu">
+                <li><a th:href="@{/onlinestoremockup/items/cart}">Cart</a></li>
+                <li><a href="#">Log in / Sign up</a></li>
+                <li><a href="#">Menu</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="added-to-cart-prompt">
+            <h2>Added to cart</h2>
+            <p th:text="${addedItemName} + ' (' + ${addedItemQuantity} + ' pcs.) - ' + ${addedItemTotalPrice} + ' USD'"></p>
+            <a th:href="@{/onlinestoremockup/items/cart}">Go to cart</a>
+            <a href="#">Continue shopping</a>
+        </div>
+    </main>
+</body>
+</html>

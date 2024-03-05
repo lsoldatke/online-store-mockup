@@ -55,13 +55,25 @@ public class ItemController {
     }
 
     @PostMapping("/add-to-cart")
-    public String addToCart(@RequestParam("item-id") Long itemId, @RequestParam("quantity") Integer quantity) {
+    public String addToCart(@RequestParam("item-id") Long itemId, @RequestParam("quantity") Integer quantity, Model model) {
         Optional<Item> optionalItem = itemService.getItemById(itemId);
 
         if (optionalItem.isPresent()) {
             Cart.addItem(optionalItem.get(), quantity);
+            model.addAttribute("addedItemName", optionalItem.get().getName());
+            model.addAttribute("addedItemQuantity", quantity);
+            model.addAttribute("addedItemTotalPrice", optionalItem.get().getPrice() * quantity);
         }
 
-        return "results";
+        System.out.println(Cart.getItemsInCart());
+
+        return "addedToCart";
+    }
+
+    @GetMapping("/cart")
+    public String showCart(Model model) {
+        model.addAttribute("itemsInCart", Cart.getItemsInCart());
+
+        return "cart";
     }
 }
