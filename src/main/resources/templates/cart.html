@@ -23,10 +23,11 @@
     <main>
         <div class="cart-contents">
             <h2>Your cart</h2>
-            <div th:each="item: ${items}" class="cart-item">
+            <div th:if="${items.size() > 0}" th:each="item: ${items}" class="cart-item">
                 <img th:src="@{${item.getKey().getImageUrl()}}" alt="Item image">
                 <p th:text="${item.getKey().getName()} + ' (' + ${item.getValue()} + ' pcs.) - ' + ${item.getKey().getPrice() * item.getValue()} + ' USD'"></p>
             </div>
+            <p th:unless="${items.size() > 0}">Your cart is empty.</p>
         </div>
     </main>
 </body>
