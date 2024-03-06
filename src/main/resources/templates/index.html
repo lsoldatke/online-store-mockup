@@ -14,7 +14,7 @@
                 <button type="submit">Search</button>
             </form>
             <ul class="menu">
-                <li><a th:href="@{/onlinestoremockup/items/cart}">Cart</a></li>
+                <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
                 <li><a href="#">Log in / Sign up</a></li>
                 <li><a href="#">Menu</a></li>
             </ul>
@@ -34,7 +34,7 @@
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
                     <p th:text="${item.name}"></p>
                     <p th:text="'Price: ' + ${item.price}"></p>
-                    <form method="post" th:action="@{/onlinestoremockup/items/add-to-cart}">
+                    <form method="post" th:action="@{/onlinestoremockup/cart}">
                         <input type="hidden" name="item-id" th:value="${item.id}">
                         <label>Quantity: <input type="number" name="quantity" value="0" min="0" max="10000"></label>
                         <input type="submit" value="Add to cart">

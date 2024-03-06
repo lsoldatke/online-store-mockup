@@ -1,19 +1,17 @@
 package org.example.onlinestoremockup.model;
 
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Cart {
     @Getter
-    private static Map<Item, Integer> itemsInCart = new HashMap<>();
+    private Map<Item, Integer> items = new HashMap<>();
 
-    public static void addItem(Item item, Integer quantity) {
-        itemsInCart.put(item, quantity);
-    }
-
-    public static void removeItem(Item item) {
-        itemsInCart.remove(item);
+    public void addItem(Item item, Integer quantity) {
+        items.put(item, quantity);
     }
 }

@@ -14,7 +14,7 @@
                 <button type="submit">Search</button>
             </form>
             <ul class="menu">
-                <li><a th:href="@{/onlinestoremockup/items/cart}">Cart</a></li>
+                <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
                 <li><a href="#">Log in / Sign up</a></li>
                 <li><a href="#">Menu</a></li>
             </ul>
@@ -23,7 +23,7 @@
     <main>
         <div class="cart-contents">
             <h2>Your cart</h2>
-            <div th:each="item: ${itemsInCart}" class="cart-item">
+            <div th:each="item: ${items}" class="cart-item">
                 <img th:src="@{${item.getKey().getImageUrl()}}" alt="Item image">
                 <p th:text="${item.getKey().getName()} + ' (' + ${item.getValue()} + ' pcs.) - ' + ${item.getKey().getPrice() * item.getValue()} + ' USD'"></p>
             </div>
