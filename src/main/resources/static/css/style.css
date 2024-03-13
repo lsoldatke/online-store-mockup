@@ -100,3 +100,8 @@ main {
     height: 15%;
     margin-right: 15px;
 }
+
+.cart-item > form {
+    display: flex;
+    margin-left: 15px;
+}

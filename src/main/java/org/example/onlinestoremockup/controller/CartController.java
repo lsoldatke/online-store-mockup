@@ -29,7 +29,7 @@ public class CartController {
         return "cart";
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public String addToCart(@RequestParam("item-id") Long itemId, @RequestParam("quantity") Integer quantity, Model model) {
         if (quantity < 1) {
             model.addAttribute("operationValid", false);
@@ -47,5 +47,18 @@ public class CartController {
         }
 
         return "addedToCart";
+    }
+
+    @PostMapping("/remove")
+    public String removeFromCart(@RequestParam("item-id") Long itemId, Model model) {
+        Optional<Item> optionalItem = itemService.getItemById(itemId);
+
+        if (optionalItem.isPresent()) {
+            Item item = optionalItem.get();
+            cartService.removeItemFromCart(itemId);
+            model.addAttribute("itemName", item.getName());
+        }
+
+        return "removedFromCart";
     }
 }

@@ -34,7 +34,7 @@
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
                     <p th:text="${item.name}"></p>
                     <p th:text="${item.price}"></p>
-                    <form method="post" th:action="@{/onlinestoremockup/cart}">
+                    <form method="post" th:action="@{/onlinestoremockup/cart/add}">
                         <input type="hidden" name="item-id" th:value="${item.id}">
                         <label>Quantity: <input type="number" name="quantity" value="1" min="1" max="10000"></label>
                         <input type="submit" value="Add to cart">

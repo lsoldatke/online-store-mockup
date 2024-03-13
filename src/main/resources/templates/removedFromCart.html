@@ -21,17 +21,11 @@
         </div>
     </header>
     <main>
-        <div class="cart-contents">
-            <h2>Your cart</h2>
-            <div th:if="${items.size() > 0}" th:each="item: ${items}" class="cart-item">
-                <img th:src="@{${item.getKey().getImageUrl()}}" alt="Item image">
-                <p th:text="${item.getKey().getName()} + ' (' + ${item.getValue()} + ' pcs.) - ' + ${item.getKey().getPrice() * item.getValue()} + ' USD'"></p>
-                <form method="post" th:action="@{/onlinestoremockup/cart/remove}">
-                    <input type="hidden" name="item-id" th:value="${item.getKey().getId()}">
-                    <input type="submit" value="Remove">
-                </form>
-            </div>
-            <p th:unless="${items.size() > 0}">Your cart is empty.</p>
+        <div class="removed-from-cart-prompt">
+            <h2>Removed from cart</h2>
+            <p th:text="${itemName}"></p>
+            <a th:href="@{/onlinestoremockup/cart}">Go to cart</a><br>
+            <a th:href="@{/onlinestoremockup}">Continue shopping</a>
         </div>
     </main>
 </body>

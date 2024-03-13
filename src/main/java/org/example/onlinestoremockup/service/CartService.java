@@ -21,4 +21,8 @@ public class CartService {
     public void addItemToCart(Item item, Integer quantity) {
         cart.addItem(item, quantity);
     }
+
+    public void removeItemFromCart(Long itemId) {
+        cart.removeItem(itemId);
+    }
 }

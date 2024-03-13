@@ -14,4 +14,12 @@ public class Cart {
     public void addItem(Item item, Integer quantity) {
         items.put(item, quantity);
     }
+
+    public void removeItem(Long itemId) {
+        for (Item item : items.keySet()) {
+            if (item.getId().equals(itemId)) {
+                items.remove(item);
+            }
+        }
+    }
 }
