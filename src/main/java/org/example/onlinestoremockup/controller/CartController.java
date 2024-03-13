@@ -1,7 +1,7 @@
 package org.example.onlinestoremockup.controller;
 
-import org.example.onlinestoremockup.model.Cart;
 import org.example.onlinestoremockup.model.Item;
+import org.example.onlinestoremockup.service.CartService;
 import org.example.onlinestoremockup.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +15,17 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/onlinestoremockup/cart")
 public class CartController {
-    private Cart cart;
+    private final CartService cartService;
     private final ItemService itemService;
 
-    public CartController(Cart cart, ItemService itemService) {
-        this.cart = cart;
+    public CartController(CartService cartService, ItemService itemService) {
+        this.cartService = cartService;
         this.itemService = itemService;
     }
 
     @GetMapping
     public String showCart(Model model) {
-        model.addAttribute("items", cart.getItems());
+        model.addAttribute("items", cartService.getItems());
         return "cart";
     }
 
@@ -38,7 +38,7 @@ public class CartController {
 
             if (optionalItem.isPresent()) {
                 Item item = optionalItem.get();
-                cart.addItem(item, quantity);
+                cartService.addItemToCart(item, quantity);
                 model.addAttribute("operationValid", true);
                 model.addAttribute("itemName", item.getName());
                 model.addAttribute("itemQuantity", quantity);
