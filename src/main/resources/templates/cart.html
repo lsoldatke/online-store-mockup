@@ -31,6 +31,7 @@
                     <input type="submit" value="Remove">
                 </form>
             </div>
+            <p th:if="${items.size() > 0}" th:text="'Total cost: ' + ${totalCost} + ' USD'"></p>
             <p th:unless="${items.size() > 0}">Your cart is empty.</p>
         </div>
     </main>

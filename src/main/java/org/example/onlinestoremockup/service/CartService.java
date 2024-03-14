@@ -25,4 +25,14 @@ public class CartService {
     public void removeItemFromCart(Long itemId) {
         cart.removeItem(itemId);
     }
+
+    public float getTotalCost() {
+        float totalCost = 0.0f;
+
+        for (Item item : cart.getItems().keySet()) {
+            totalCost += item.getPrice();
+        }
+
+        return totalCost;
+    }
 }
