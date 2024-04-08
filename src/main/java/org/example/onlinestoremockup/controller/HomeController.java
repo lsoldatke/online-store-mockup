@@ -19,6 +19,7 @@ public class HomeController {
     public String home(Model model) {
         model.addAttribute("items", itemService.getAllItems());
         model.addAttribute("itemCategories", itemService.getAllCategories());
+        model.addAttribute("title", "Recommended articles");
         return "index";
     }
 }

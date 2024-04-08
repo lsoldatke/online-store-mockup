@@ -10,6 +10,7 @@
         <a href="/onlinestoremockup"><h1>Online store</h1></a>
         <div class="tools">
             <form th:action="@{/onlinestoremockup/items/search}" method="post" class="search-bar">
+                <label for="searched-phrase" hidden>Search: </label>
                 <input type="text" name="searched-phrase" id="searched-phrase" placeholder="Search for something...">
                 <button type="submit">Search</button>
             </form>
@@ -28,7 +29,7 @@
             </ul>
         </div>
         <div class="recommended-articles-div">
-            <h2>Recommended articles</h2>
+            <h2 th:text="${title}">Title</h2>
             <div class="recommended-articles-content">
                 <div th:each="item: ${items}" class="test-item">
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
