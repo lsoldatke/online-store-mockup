@@ -39,17 +39,17 @@ public class ItemController {
     @GetMapping("/category")
     public String returnItemsByCategory(@RequestParam String categoryName, Model model) {
         ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
-        model.addAttribute("results", itemService.getItemsByCategory(itemCategory));
+        model.addAttribute("items", itemService.getItemsByCategory(itemCategory));
         model.addAttribute("itemCategories", itemService.getAllCategories());
         model.addAttribute("title", categoryName);
-        return "results";
+        return "index";
     }
 
     @PostMapping("/search")
     public String returnItemsByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
-        model.addAttribute("results", itemService.getItemsByName(searchedPhrase));
+        model.addAttribute("items", itemService.getItemsByName(searchedPhrase));
         model.addAttribute("itemCategories", itemService.getAllCategories());
         model.addAttribute("title", "Search results for \"" + searchedPhrase + "\"");
-        return "results";
+        return "index";
     }
 }
