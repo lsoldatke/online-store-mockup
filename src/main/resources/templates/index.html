@@ -8,13 +8,13 @@
 <body>
     <header>
         <a href="/onlinestoremockup"><h1>Online store</h1></a>
-        <div class="tools">
-            <form th:action="@{/onlinestoremockup/items/search}" method="post" class="search-bar">
+        <div id="tools">
+            <form th:action="@{/onlinestoremockup/items/search}" method="post" id="search-bar">
                 <label for="searched-phrase" hidden>Search: </label>
                 <input type="text" name="searched-phrase" id="searched-phrase" placeholder="Search for something...">
                 <button type="submit">Search</button>
             </form>
-            <ul class="menu">
+            <ul id="menu">
                 <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
                 <li><a href="#">Log in / Sign up</a></li>
                 <li><a href="#">Menu</a></li>
@@ -22,16 +22,16 @@
         </div>
     </header>
     <main>
-        <div class="categories-div">
+        <div id="categories">
             <h2>Categories</h2>
-            <ul class="categories-list">
+            <ul id="categories-list">
                 <li th:each="itemCategory: ${itemCategories}"><a th:href="@{/onlinestoremockup/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a></li>
             </ul>
         </div>
-        <div class="recommended-articles-div">
+        <div id="content">
             <h2 th:text="${title}">Title</h2>
-            <div class="recommended-articles-content">
-                <div th:each="item: ${items}" class="test-item">
+            <div id="items">
+                <div th:each="item: ${items}" class="item">
                     <img th:src="@{${item.imageUrl}}" alt="Item image">
                     <p th:text="${item.name}"></p>
                     <p th:text="'Price: ' + ${item.price}"></p>
