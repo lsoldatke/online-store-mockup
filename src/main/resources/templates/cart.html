@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Online store mockup</title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <title>Online store mockup</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <a href="/onlinestoremockup"><h1>Online store</h1></a>
-        <div class="tools">
-            <form class="search-bar">
-                <input type="text" id="searched-phrase" placeholder="Search for something...">
-                <button type="submit">Search</button>
-            </form>
-            <ul class="menu">
-                <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
-                <li><a href="#">Log in / Sign up</a></li>
-                <li><a href="#">Menu</a></li>
-            </ul>
-        </div>
-    </header>
-    <main>
-        <div class="cart-contents">
-            <h2>Your cart</h2>
-            <div th:if="${items.size() > 0}" th:each="item: ${items}" class="cart-item">
-                <img th:src="@{${item.getKey().getImageUrl()}}" alt="Item image">
-                <p th:text="${item.getKey().getName()} + ' (' + ${item.getValue()} + ' pcs.) - ' + ${item.getKey().getPrice() * item.getValue()} + ' USD'"></p>
-                <form method="post" th:action="@{/onlinestoremockup/cart/remove}">
-                    <input type="hidden" name="item-id" th:value="${item.getKey().getId()}">
-                    <input type="submit" value="Remove">
-                </form>
-            </div>
-            <p th:if="${items.size() > 0}" th:text="'Total cost: ' + ${totalCost} + ' USD'"></p>
-            <p th:unless="${items.size() > 0}">Your cart is empty.</p>
-        </div>
-    </main>
+  <header>
+    <a href="/onlinestoremockup"><h1>Online store</h1></a>
+    <div class="tools">
+      <form class="search-bar">
+        <input type="text" id="searched-phrase" placeholder="Search for something...">
+        <button type="submit">Search</button>
+      </form>
+      <ul class="menu">
+        <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
+        <li><a href="#">Log in / Sign up</a></li>
+        <li><a href="#">Menu</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="cart-contents">
+      <h2>Your cart</h2>
+      <div th:if="${items.size() > 0}" th:each="item: ${items}" class="cart-item">
+        <img th:src="@{${item.getKey().getImageUrl()}}" alt="Item image">
+        <p th:text="${item.getKey().getName()} + ' (' + ${item.getValue()} + ' pcs.) - ' + ${item.getKey().getPrice() * item.getValue()} + ' USD'"></p>
+        <form method="post" th:action="@{/onlinestoremockup/cart/remove}">
+          <input type="hidden" name="item-id" th:value="${item.getKey().getId()}">
+          <input type="submit" value="Remove">
+        </form>
+      </div>
+      <p th:if="${items.size() > 0}" th:text="'Total cost: ' + ${totalCost} + ' USD'"></p>
+      <p th:unless="${items.size() > 0}">Your cart is empty.</p>
+    </div>
+  </main>
 </body>
 </html>
