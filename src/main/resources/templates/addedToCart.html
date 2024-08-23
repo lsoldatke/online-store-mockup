@@ -6,29 +6,30 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header>
-    <a href="/onlinestoremockup"><h1>Online store</h1></a>
-    <div id="tools">
-      <form id="search-bar">
-        <input type="text" id="searched-phrase" placeholder="Search for something...">
-        <button type="submit">Search</button>
-      </form>
-      <ul id="menu">
-        <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
-        <li><a href="#">Log in / Sign up</a></li>
-        <li><a href="#">Menu</a></li>
-      </ul>
-    </div>
-  </header>
-  <main>
-    <div class="added-to-cart-prompt">
-      <h2 th:if="${operationValid}">Added to cart</h2>
-      <p th:if="${operationValid}" th:text="${itemName} + ' (' + ${itemQuantity} + ' pcs.) - ' + ${itemTotalPrice} + ' USD'"></p>
-      <h2 th:unless="${operationValid}">Error adding to cart</h2>
-      <p th:unless="${operationValid}">Error occurred adding item to cart - minimum item quantity is 1.</p>
-      <a th:href="@{/onlinestoremockup/cart}">Go to cart</a>
-      <a th:href="@{/onlinestoremockup}">Continue shopping</a>
-    </div>
-  </main>
+<header>
+  <a href="/onlinestoremockup"><h1>Online store</h1></a>
+  <div id="tools">
+    <form id="search-bar">
+      <input type="text" id="searched-phrase" placeholder="Search for something...">
+      <button type="submit">Search</button>
+    </form>
+    <ul id="menu">
+      <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
+      <li><a href="#">Log in / Sign up</a></li>
+      <li><a href="#">Menu</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+  <div class="added-to-cart-prompt">
+    <h2 th:if="${operationValid}">Added to cart</h2>
+    <p th:if="${operationValid}"
+       th:text="${itemName} + ' (' + ${itemQuantity} + ' pcs.) - ' + ${itemTotalPrice} + ' USD'"></p>
+    <h2 th:unless="${operationValid}">Error adding to cart</h2>
+    <p th:unless="${operationValid}">Error occurred adding item to cart - minimum item quantity is 1.</p>
+    <a th:href="@{/onlinestoremockup/cart}">Go to cart</a>
+    <a th:href="@{/onlinestoremockup}">Continue shopping</a>
+  </div>
+</main>
 </body>
 </html>
