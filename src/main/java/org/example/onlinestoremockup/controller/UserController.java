@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/onlinestoremockup/users")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 

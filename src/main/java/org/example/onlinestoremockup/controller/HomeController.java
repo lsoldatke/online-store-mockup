@@ -4,10 +4,8 @@ import org.example.onlinestoremockup.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/onlinestoremockup")
 public class HomeController {
     private final ItemService itemService;
 
@@ -15,11 +13,12 @@ public class HomeController {
         this.itemService = itemService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String home(Model model) {
+        model.addAttribute("title", "Recommended articles");
         model.addAttribute("items", itemService.getAllItems());
         model.addAttribute("itemCategories", itemService.getAllCategories());
-        model.addAttribute("title", "Recommended articles");
+
         return "index";
     }
 }

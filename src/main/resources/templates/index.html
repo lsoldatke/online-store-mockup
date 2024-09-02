@@ -7,15 +7,15 @@
 </head>
 <body>
 <header>
-  <a href="/onlinestoremockup"><h1>Online store</h1></a>
+  <a href="/"><h1>Online store</h1></a>
   <div id="tools">
-    <form th:action="@{/onlinestoremockup/items/search}" method="post" id="search-bar">
+    <form th:action="@{/items/search}" method="post" id="search-bar">
       <label for="searched-phrase" hidden>Search: </label>
       <input type="text" name="searched-phrase" id="searched-phrase" placeholder="Search for something...">
       <button type="submit">Search</button>
     </form>
     <ul id="menu">
-      <li><a th:href="@{/onlinestoremockup/cart}">Cart</a></li>
+      <li><a th:href="@{/cart}">Cart</a></li>
       <li><a href="#">Log in / Sign up</a></li>
       <li><a href="#">Menu</a></li>
     </ul>
@@ -26,7 +26,7 @@
     <h2>Categories</h2>
     <ul id="categories-list">
       <li th:each="itemCategory: ${itemCategories}"><a
-          th:href="@{/onlinestoremockup/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a>
+          th:href="@{/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a>
       </li>
     </ul>
   </div>
@@ -37,7 +37,7 @@
         <img th:src="@{${item.imageUrl}}" alt="Item image">
         <p th:text="${item.name}"></p>
         <p th:text="'Price: ' + ${item.price}"></p>
-        <form method="post" th:action="@{/onlinestoremockup/cart/add}">
+        <form method="post" th:action="@{/cart/add}">
           <input type="hidden" name="item-id" th:value="${item.id}">
           <label>Quantity: <input type="number" name="quantity" value="1" min="1" max="10000"></label>
           <input type="submit" value="Add to cart">

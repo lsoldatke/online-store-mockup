@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/onlinestoremockup/cart")
+@RequestMapping("/cart")
 public class CartController {
     private final CartService cartService;
     private final ItemService itemService;

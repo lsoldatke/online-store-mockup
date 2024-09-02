@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/onlinestoremockup/items")
+@RequestMapping("/items")
 public class ItemController {
     private final ItemService itemService;
 
