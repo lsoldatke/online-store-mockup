@@ -47,7 +47,7 @@ public class CartController {
             }
         }
 
-        return "addedToCart";
+        return "added-to-cart";
     }
 
     @PostMapping("/remove")
@@ -60,6 +60,6 @@ public class CartController {
             model.addAttribute("itemName", item.getName());
         }
 
-        return "removedFromCart";
+        return "removed-from-cart";
     }
 }
