@@ -16,8 +16,8 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Recommended articles");
-        model.addAttribute("items", itemService.getAllItems());
-        model.addAttribute("itemCategories", itemService.getAllCategories());
+        model.addAttribute("items", itemService.getAll());
+        model.addAttribute("categories", itemService.getCategories());
 
         return "index";
     }

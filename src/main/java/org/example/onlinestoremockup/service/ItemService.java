@@ -16,27 +16,27 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public List<Item> getAllItems() {
+    public List<Item> getAll() {
         return itemRepository.findAll();
     }
 
-    public Optional<Item> getItemById(Long id) {
+    public List<Item> getByName(String name) {
+        return itemRepository.findByName(name);
+    }
+
+    public List<Item> getByCategory(ItemCategory category) {
+        return itemRepository.findByCategory(category);
+    }
+
+    public Optional<Item> getById(Long id) {
         return itemRepository.findById(id);
     }
 
-    public void addItem(Item item) {
+    public List<ItemCategory> getCategories() {
+        return itemRepository.findCategories();
+    }
+
+    public void add(Item item) {
         itemRepository.save(item);
-    }
-
-    public List<ItemCategory> getAllCategories() {
-        return itemRepository.getAllCategories();
-    }
-
-    public List<Item> getItemsByCategory(ItemCategory itemCategory) {
-        return itemRepository.getByCategory(itemCategory);
-    }
-
-    public List<Item> getItemsByName(String itemName) {
-        return itemRepository.getByName(itemName);
     }
 }

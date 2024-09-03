@@ -25,8 +25,8 @@
   <div id="categories">
     <h2>Categories</h2>
     <ul id="categories-list">
-      <li th:each="itemCategory: ${itemCategories}"><a
-          th:href="@{/items/category(categoryName=${itemCategory})}" th:text="${itemCategory}"></a>
+      <li th:each="category: ${categories}"><a
+              th:href="@{/items/category(categoryName=${category})}" th:text="${category}"></a>
       </li>
     </ul>
   </div>
