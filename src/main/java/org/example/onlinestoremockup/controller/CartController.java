@@ -35,7 +35,7 @@ public class CartController {
         if (quantity < 1) {
             model.addAttribute("operationValid", false);
         } else {
-            Optional<Item> optionalItem = itemService.getItemById(itemId);
+            Optional<Item> optionalItem = itemService.getById(itemId);
 
             if (optionalItem.isPresent()) {
                 Item item = optionalItem.get();
@@ -52,7 +52,7 @@ public class CartController {
 
     @PostMapping("/remove")
     public String removeFromCart(@RequestParam("item-id") Long itemId, Model model) {
-        Optional<Item> optionalItem = itemService.getItemById(itemId);
+        Optional<Item> optionalItem = itemService.getById(itemId);
 
         if (optionalItem.isPresent()) {
             Item item = optionalItem.get();

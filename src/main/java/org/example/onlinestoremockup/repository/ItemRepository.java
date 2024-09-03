@@ -10,12 +10,12 @@ import java.util.List;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    @Query("SELECT DISTINCT(i.category) FROM Item i")
-    List<ItemCategory> getAllCategories();
+    @Query("SELECT i FROM Item i WHERE i.name LIKE ?1")
+    List<Item> findByName(String name);
 
     @Query("SELECT i FROM Item i WHERE i.category = ?1")
-    List<Item> getByCategory(ItemCategory itemCategory);
+    List<Item> findByCategory(ItemCategory category);
 
-    @Query("SELECT i FROM Item i WHERE i.name LIKE ?1")
-    List<Item> getByName(String itemName);
+    @Query("SELECT DISTINCT(i.category) FROM Item i")
+    List<ItemCategory> findCategories();
 }

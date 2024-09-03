@@ -22,35 +22,38 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<Item> returnAllItems() {
-        return itemService.getAllItems();
+    public List<Item> getAll() {
+        return itemService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Item> returnItemById(@PathVariable Long id) {
-        return itemService.getItemById(id);
-    }
-
-    @PostMapping
-    public ResponseEntity<Item> saveItem(@RequestBody Item item) {
-        itemService.addItem(item);
-        return ResponseEntity.ok(item);
-    }
-
-    @GetMapping("/category")
-    public String returnItemsByCategory(@RequestParam String categoryName, Model model) {
-        ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
-        model.addAttribute("items", itemService.getItemsByCategory(itemCategory));
-        model.addAttribute("itemCategories", itemService.getAllCategories());
-        model.addAttribute("title", categoryName);
-        return "index";
+    public Optional<Item> getById(@PathVariable Long id) {
+        return itemService.getById(id);
     }
 
     @PostMapping("/search")
-    public String returnItemsByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
-        model.addAttribute("items", itemService.getItemsByName(searchedPhrase));
-        model.addAttribute("itemCategories", itemService.getAllCategories());
+    public String getByName(@RequestParam("searched-phrase") String searchedPhrase, Model model) {
+        model.addAttribute("items", itemService.getByName(searchedPhrase));
+        model.addAttribute("itemCategories", itemService.getCategories());
         model.addAttribute("title", "Search results for \"" + searchedPhrase + "\"");
+
         return "index";
+    }
+
+    @GetMapping("/category")
+    public String getByCategory(@RequestParam String categoryName, Model model) {
+        ItemCategory itemCategory = ItemCategory.valueOf(categoryName);
+        model.addAttribute("items", itemService.getByCategory(itemCategory));
+        model.addAttribute("itemCategories", itemService.getCategories());
+        model.addAttribute("title", categoryName);
+
+        return "index";
+    }
+
+    @PostMapping
+    public ResponseEntity<Item> add(@RequestBody Item item) {
+        itemService.add(item);
+
+        return ResponseEntity.ok(item);
     }
 }
