@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Component
 public class Cart {
-    @Getter
     private List<CartItem> items = new ArrayList<>();
 
-    public void addItem(Long articleId, Integer quantity) {
+    public void addArticle(Long articleId, int quantity) {
         for (CartItem item : items) {
             if (item.getArticleId().equals(articleId)) {
                 item.increaseQuantity(quantity);
@@ -22,11 +22,7 @@ public class Cart {
         items.add(new CartItem(articleId, quantity));
     }
 
-    public void removeItem(Long itemId) {
-        for (Item item : items.keySet()) {
-            if (item.getId().equals(itemId)) {
-                items.remove(item);
-            }
-        }
+    public void removeArticle(Long articleId) {
+        items.removeIf(item -> item.getArticleId().equals(articleId));
     }
 }

@@ -1,35 +1,47 @@
 package org.example.onlinestoremockup.service;
 
 import org.example.onlinestoremockup.model.Cart;
+import org.example.onlinestoremockup.model.CartItem;
 import org.example.onlinestoremockup.model.Item;
+import org.example.onlinestoremockup.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
 @Service
 public class CartService {
     private final Cart cart;
+    private final ItemRepository itemRepository;
 
-    public CartService(Cart cart) {
+    public CartService(Cart cart, ItemRepository itemRepository) {
         this.cart = cart;
+        this.itemRepository = itemRepository;
     }
 
-    public Map<Item, Integer> getItems() {
+    public List<CartItem> getItems() {
         return cart.getItems();
     }
 
-    public void addItemToCart(Item item, Integer quantity) {
-        cart.addItem(item, quantity);
+    public void addItem(Long articleId, int quantity) {
+        cart.addArticle(articleId, quantity);
     }
 
     public void removeItemFromCart(Long itemId) {
-        cart.removeItem(itemId);
+        cart.removeArticle(itemId);
     }
 
     public float getTotalCost() {
+        /*
+            TODO:
+                - Change float to BigDecimal
+                - Check optional
+         */
+
         float totalCost = 0.0f;
 
-        for (Item item : cart.getItems().keySet()) {
+        for (CartItem cartItem : cart.getItems()) {
+            Item item = itemRepository.findById(cartItem.getArticleId()).get();
+
             totalCost += item.getPrice();
         }
 

@@ -31,15 +31,15 @@ public class CartController {
     }
 
     @PostMapping("/add")
-    public String addToCart(@RequestParam("item-id") Long itemId, @RequestParam("quantity") Integer quantity, Model model) {
+    public String addToCart(@RequestParam("articleId") Long articleId, @RequestParam("quantity") int quantity, Model model) {
         if (quantity < 1) {
             model.addAttribute("operationValid", false);
         } else {
-            Optional<Item> optionalItem = itemService.getById(itemId);
+            Optional<Item> optionalItem = itemService.getById(articleId);
 
             if (optionalItem.isPresent()) {
                 Item item = optionalItem.get();
-                cartService.addItemToCart(item, quantity);
+                cartService.addItem(articleId, quantity);
                 model.addAttribute("operationValid", true);
                 model.addAttribute("itemName", item.getName());
                 model.addAttribute("itemQuantity", quantity);
