@@ -1,5 +1,7 @@
 package org.example.onlinestoremockup.controller;
 
+import org.example.onlinestoremockup.model.CartItem;
+import org.example.onlinestoremockup.model.CartItemDto;
 import org.example.onlinestoremockup.model.Item;
 import org.example.onlinestoremockup.service.CartService;
 import org.example.onlinestoremockup.service.ItemService;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,8 +28,12 @@ public class CartController {
 
     @GetMapping
     public String showCart(Model model) {
-        model.addAttribute("items", cartService.getItems());
+        List<CartItem> cartItems = cartService.getItems();
+        List<CartItemDto> cartItemDtos = cartService.getDetailedItems(cartItems);
+
+        model.addAttribute("items", cartItemDtos);
         model.addAttribute("totalCost", cartService.getTotalCost());
+
         return "cart";
     }
 
