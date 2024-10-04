@@ -1,10 +1,10 @@
 package org.example.onlinestoremockup.controller;
 
+import org.example.onlinestoremockup.model.Article;
 import org.example.onlinestoremockup.model.CartItem;
 import org.example.onlinestoremockup.model.CartItemDto;
-import org.example.onlinestoremockup.model.Item;
 import org.example.onlinestoremockup.service.CartService;
-import org.example.onlinestoremockup.service.ItemService;
+import org.example.onlinestoremockup.service.ArticleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +19,11 @@ import java.util.Optional;
 @RequestMapping("/cart")
 public class CartController {
     private final CartService cartService;
-    private final ItemService itemService;
+    private final ArticleService articleService;
 
-    public CartController(CartService cartService, ItemService itemService) {
+    public CartController(CartService cartService, ArticleService articleService) {
         this.cartService = cartService;
-        this.itemService = itemService;
+        this.articleService = articleService;
     }
 
     @GetMapping
@@ -42,15 +42,15 @@ public class CartController {
         if (quantity < 1) {
             model.addAttribute("operationValid", false);
         } else {
-            Optional<Item> optionalItem = itemService.getById(articleId);
+            Optional<Article> optionalItem = articleService.getById(articleId);
 
             if (optionalItem.isPresent()) {
-                Item item = optionalItem.get();
+                Article article = optionalItem.get();
                 cartService.addItem(articleId, quantity);
                 model.addAttribute("operationValid", true);
-                model.addAttribute("itemName", item.getName());
+                model.addAttribute("itemName", article.getName());
                 model.addAttribute("itemQuantity", quantity);
-                model.addAttribute("itemTotalPrice", item.getPrice() * quantity);
+                model.addAttribute("itemTotalPrice", article.getPrice() * quantity);
             }
         }
 
@@ -59,12 +59,12 @@ public class CartController {
 
     @PostMapping("/remove")
     public String removeFromCart(@RequestParam("item-id") Long itemId, Model model) {
-        Optional<Item> optionalItem = itemService.getById(itemId);
+        Optional<Article> optionalItem = articleService.getById(itemId);
 
         if (optionalItem.isPresent()) {
-            Item item = optionalItem.get();
+            Article article = optionalItem.get();
             cartService.removeItemFromCart(itemId);
-            model.addAttribute("itemName", item.getName());
+            model.addAttribute("itemName", article.getName());
         }
 
         return "removed-from-cart";

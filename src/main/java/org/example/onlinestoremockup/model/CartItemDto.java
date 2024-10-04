@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class CartItemDto {
-    private Item item;
+    private Article article;
     private int quantity;
 }

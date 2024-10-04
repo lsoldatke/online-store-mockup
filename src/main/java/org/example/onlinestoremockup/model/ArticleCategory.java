@@ -1,5 +1,5 @@
 package org.example.onlinestoremockup.model;
 
-public enum ItemCategory {
+public enum ArticleCategory {
     TV, COMPUTERS, SMARTPHONES, HOUSEHOLD_ARTICLES, AUDIO, CONSOLES
 }

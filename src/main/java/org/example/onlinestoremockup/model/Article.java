@@ -7,14 +7,14 @@ import lombok.Getter;
 @Entity
 @Data
 @Getter
-public class Item {
+public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private float price;
     @Enumerated(EnumType.STRING)
-    private ItemCategory category;
+    private ArticleCategory category;
     private String imageUrl;
     private int available;
 }

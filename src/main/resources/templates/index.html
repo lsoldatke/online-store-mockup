@@ -9,7 +9,7 @@
 <header>
   <a href="/"><h1>Online store</h1></a>
   <div id="tools">
-    <form th:action="@{/items/search}" method="post" id="search-bar">
+    <form th:action="@{/articles/search}" method="post" id="search-bar">
       <label for="searched-phrase" hidden>Search: </label>
       <input type="text" name="searched-phrase" id="searched-phrase" placeholder="Search for something...">
       <button type="submit">Search</button>
@@ -26,19 +26,19 @@
     <h2>Categories</h2>
     <ul id="categories-list">
       <li th:each="category: ${categories}"><a
-              th:href="@{/items/category(categoryName=${category})}" th:text="${category}"></a>
+              th:href="@{/articles/category(categoryName=${category})}" th:text="${category}"></a>
       </li>
     </ul>
   </div>
   <div id="content">
     <h2 th:text="${title}">Title</h2>
-    <div id="items">
-      <div th:each="item: ${items}" class="item">
-        <img th:src="@{${item.imageUrl}}" alt="Item image">
-        <p th:text="${item.name}"></p>
-        <p th:text="'Price: ' + ${item.price}"></p>
+    <div id="articles">
+      <div th:each="article: ${articles}" class="article">
+        <img th:src="@{${article.imageUrl}}" alt="Article image">
+        <p th:text="${article.name}"></p>
+        <p th:text="'Price: ' + ${article.price}"></p>
         <form method="post" th:action="@{/cart/add}">
-          <input type="hidden" name="articleId" th:value="${item.id}">
+          <input type="hidden" name="articleId" th:value="${article.id}">
           <label>Quantity: <input type="number" name="quantity" value="1" min="1" max="10000"></label>
           <input type="submit" value="Add to cart">
         </form>

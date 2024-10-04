@@ -24,10 +24,10 @@
   <div class="cart-contents">
     <h2>Your cart</h2>
     <div th:if="${items.size() > 0}" th:each="item: ${items}" class="cart-item">
-      <img th:src="@{${item.item.imageUrl}}" alt="Item image">
-      <p th:text="${item.item.name} + ' (' + ${item.quantity} + ' pcs.) - ' + ${item.item.price * item.quantity} + ' USD'"></p>
+      <img th:src="@{${item.article.imageUrl}}" alt="Item image">
+      <p th:text="${item.article.name} + ' (' + ${item.quantity} + ' pcs.) - ' + ${item.article.price * item.quantity} + ' USD'"></p>
       <form method="post" th:action="@{/cart/remove}">
-        <input type="hidden" name="item-id" th:value="${item.item.id}">
+        <input type="hidden" name="item-id" th:value="${item.article.id}">
         <input type="submit" value="Remove">
       </form>
     </div>
