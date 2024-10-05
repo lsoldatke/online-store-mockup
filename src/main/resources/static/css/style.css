@@ -65,18 +65,18 @@ main {
   width: 200px;
 }
 
-.item > img {
+.item > img, .article > img {
   height: 60%;
   width: 60%;
 }
 
-.item > form {
+.item > form, .article > form {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.item > form * {
+.item > form *, .article > form * {
   margin: 5px;
 }
 
